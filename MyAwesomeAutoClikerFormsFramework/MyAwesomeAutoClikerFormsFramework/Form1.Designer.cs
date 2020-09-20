@@ -40,8 +40,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.buttonStart = new System.Windows.Forms.Button();
+            this.checkBoxRandomNumber = new System.Windows.Forms.CheckBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // textBoxTimer
@@ -136,10 +137,6 @@
             this.label5.TabIndex = 16;
             this.label5.Text = "Milisekunder";
             // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
             // buttonStart
             // 
             this.buttonStart.Location = new System.Drawing.Point(49, 246);
@@ -150,11 +147,26 @@
             this.buttonStart.UseVisualStyleBackColor = true;
             this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
             // 
+            // checkBoxRandomNumber
+            // 
+            this.checkBoxRandomNumber.AutoSize = true;
+            this.checkBoxRandomNumber.Location = new System.Drawing.Point(49, 137);
+            this.checkBoxRandomNumber.Name = "checkBoxRandomNumber";
+            this.checkBoxRandomNumber.Size = new System.Drawing.Size(80, 17);
+            this.checkBoxRandomNumber.TabIndex = 18;
+            this.checkBoxRandomNumber.Text = "Tilfældig tal";
+            this.checkBoxRandomNumber.UseVisualStyleBackColor = true;
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(507, 388);
+            this.Controls.Add(this.checkBoxRandomNumber);
             this.Controls.Add(this.buttonStart);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -187,8 +199,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button buttonStart;
+        private System.Windows.Forms.CheckBox checkBoxRandomNumber;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

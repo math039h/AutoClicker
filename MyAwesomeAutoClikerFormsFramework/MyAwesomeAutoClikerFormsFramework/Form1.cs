@@ -25,15 +25,20 @@ namespace MyAwesomeAutoClikerFormsFramework
         private int hour;
         private int minutes;
         private int seconds;
-        private int milisconds;
+        private int miliseconds;
         public int intervals = 5;
         public int parsedValue;
         public bool click = false;
-
+        private Random randomNumber;
+        private int milisecondsRandom;       
+        private int rndNum;
         public int Hour { get => hour; set => hour = value; }
         public int Minutes { get => minutes; set => minutes = value; }
         public int Seconds { get => seconds; set => seconds = value; }
-        public int Milisconds { get => milisconds; set => milisconds = value; }
+        public int Miliseconds { get => miliseconds; set => miliseconds = 1; }
+        public Random RandomNumber { get => randomNumber; set => randomNumber = value; }
+        public int MilisecondsRandom { get => milisecondsRandom; set => milisecondsRandom = value; }
+        public int RndNum { get => rndNum; set => rndNum = value; }
 
         public Form1()
         {
@@ -93,8 +98,6 @@ namespace MyAwesomeAutoClikerFormsFramework
                     click = false;
                     Thread.Sleep(1);
                 }
-
-                
                 Thread.Sleep(1);
             }
         }
@@ -112,18 +115,33 @@ namespace MyAwesomeAutoClikerFormsFramework
             else
             {
                 TimeConverter();
-                intervals = Hour + Minutes + Seconds + Milisconds;
-                buttonStart.Visible = false;
-                buttonStop.Visible = true;
+                Random RandomNumber = new Random();
+                if (checkBoxRandomNumber.Checked)
+                {
+                    RndNum = RandomNumber.Next(1, 10001); 
+                    intervals = Hour + Minutes + Seconds + RndNum;
+                    buttonStart.Visible = false;
+                    buttonStop.Visible = true;
+                }
+                else if (!checkBoxRandomNumber.Checked)
+                {
+                    intervals = Hour + Minutes + Seconds + Miliseconds;
+                    buttonStart.Visible = false;
+                    buttonStop.Visible = true;
+                }
+
             }
         }
+
+
+
 
         private void TimeConverter()
         {
             Hour = Convert.ToInt32(textBoxTimer.Text) * 3600000;
             Minutes = Convert.ToInt32(textBoxMinuter.Text) * 60000;
             Seconds = Convert.ToInt32(textBoxSekunder.Text) * 1000;
-            Milisconds = Convert.ToInt32(textBoxMilisekunder.Text);
+            Miliseconds = Convert.ToInt32(textBoxMilisekunder.Text);           
         }
 
         private void timer1_Tick(object sender, EventArgs e)
