@@ -74,7 +74,7 @@ namespace MyAwesomeAutoClikerFormsFramework
                         mouse_event(dwFlags: leftUp, dx: 0, dy: 0, cButtons: 0, dwExtraInfo: 0);
                         Thread.Sleep(1);
                         mouse_event(dwFlags: leftDown, dx: 0, dy: 0, cButtons: 0, dwExtraInfo: 0);
-                        RndNum = Next(5 * 1001);
+                        RndNum = Next(Convert.ToInt32(textBoxMinimum.Text), Convert.ToInt32(textBoxMaximum.Text));
                         RandomIntervals = intervals + RndNum;
                         Thread.Sleep(RandomIntervals);
                     }
@@ -139,7 +139,7 @@ namespace MyAwesomeAutoClikerFormsFramework
         private static readonly Random Global = new Random();
         [ThreadStatic] private static Random _local;
 
-        public int Next(int max)
+        public int Next(int min, int max)
         {
             var localBuffer = _local;
             if (localBuffer == null)
@@ -149,7 +149,7 @@ namespace MyAwesomeAutoClikerFormsFramework
                 localBuffer = new Random(seed);
                 _local = localBuffer;
             }
-            return localBuffer.Next(max);
+            return localBuffer.Next(min, max);
         }
 
         private void TimeConverter()

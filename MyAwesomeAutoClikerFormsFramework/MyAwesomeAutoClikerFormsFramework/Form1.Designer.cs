@@ -43,6 +43,10 @@
             this.buttonStart = new System.Windows.Forms.Button();
             this.checkBoxRandomNumber = new System.Windows.Forms.CheckBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.textBoxMinimum = new System.Windows.Forms.TextBox();
+            this.textBoxMaximum = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBoxTimer
@@ -161,11 +165,47 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // textBoxMinimum
+            // 
+            this.textBoxMinimum.Location = new System.Drawing.Point(49, 84);
+            this.textBoxMinimum.Name = "textBoxMinimum";
+            this.textBoxMinimum.Size = new System.Drawing.Size(93, 20);
+            this.textBoxMinimum.TabIndex = 19;
+            // 
+            // textBoxMaximum
+            // 
+            this.textBoxMaximum.Location = new System.Drawing.Point(148, 84);
+            this.textBoxMaximum.Name = "textBoxMaximum";
+            this.textBoxMaximum.Size = new System.Drawing.Size(93, 20);
+            this.textBoxMaximum.TabIndex = 20;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(46, 68);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(48, 13);
+            this.label6.TabIndex = 21;
+            this.label6.Text = "Minimum";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(148, 68);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(51, 13);
+            this.label7.TabIndex = 22;
+            this.label7.Text = "Maximum";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(507, 388);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.textBoxMaximum);
+            this.Controls.Add(this.textBoxMinimum);
             this.Controls.Add(this.checkBoxRandomNumber);
             this.Controls.Add(this.buttonStart);
             this.Controls.Add(this.label5);
@@ -202,6 +242,10 @@
         private System.Windows.Forms.Button buttonStart;
         private System.Windows.Forms.CheckBox checkBoxRandomNumber;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.TextBox textBoxMinimum;
+        private System.Windows.Forms.TextBox textBoxMaximum;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }
 
