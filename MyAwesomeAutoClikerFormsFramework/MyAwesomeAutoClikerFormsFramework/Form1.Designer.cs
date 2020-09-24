@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.textBoxTimer = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.label1 = new System.Windows.Forms.Label();
@@ -42,7 +41,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.buttonStart = new System.Windows.Forms.Button();
             this.checkBoxRandomNumber = new System.Windows.Forms.CheckBox();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.textBoxMinimum = new System.Windows.Forms.TextBox();
             this.textBoxMaximum = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -52,6 +50,11 @@
             this.labelXAksis = new System.Windows.Forms.Label();
             this.labelYAksis = new System.Windows.Forms.Label();
             this.checkBoxCursorPlacement = new System.Windows.Forms.CheckBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textBoxSecondXAksis = new System.Windows.Forms.TextBox();
+            this.textBoxSecondYAksis = new System.Windows.Forms.TextBox();
+            this.checkBoxSecondCursorPlacement = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // textBoxTimer
@@ -101,13 +104,13 @@
             // 
             // buttonStop
             // 
+            this.buttonStop.Enabled = false;
             this.buttonStop.Location = new System.Drawing.Point(247, 246);
             this.buttonStop.Name = "buttonStop";
             this.buttonStop.Size = new System.Drawing.Size(192, 43);
             this.buttonStop.TabIndex = 12;
             this.buttonStop.Text = "Stop";
             this.buttonStop.UseVisualStyleBackColor = true;
-            this.buttonStop.Visible = false;
             this.buttonStop.Click += new System.EventHandler(this.buttonStop_Click);
             // 
             // label2
@@ -166,10 +169,6 @@
             this.checkBoxRandomNumber.Text = "Tilfældig tal";
             this.checkBoxRandomNumber.UseVisualStyleBackColor = true;
             // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
             // textBoxMinimum
             // 
             this.textBoxMinimum.Location = new System.Drawing.Point(49, 84);
@@ -210,7 +209,7 @@
             this.textBoxXAksis.Name = "textBoxXAksis";
             this.textBoxXAksis.Size = new System.Drawing.Size(93, 20);
             this.textBoxXAksis.TabIndex = 23;
-            this.textBoxXAksis.Text = "100";
+            this.textBoxXAksis.Text = "1400";
             // 
             // textBoxYAksis
             // 
@@ -218,7 +217,7 @@
             this.textBoxYAksis.Name = "textBoxYAksis";
             this.textBoxYAksis.Size = new System.Drawing.Size(90, 20);
             this.textBoxYAksis.TabIndex = 24;
-            this.textBoxYAksis.Text = "100";
+            this.textBoxYAksis.Text = "600";
             // 
             // labelXAksis
             // 
@@ -241,18 +240,67 @@
             // checkBoxCursorPlacement
             // 
             this.checkBoxCursorPlacement.AutoSize = true;
-            this.checkBoxCursorPlacement.Location = new System.Drawing.Point(260, 123);
+            this.checkBoxCursorPlacement.Location = new System.Drawing.Point(260, 125);
             this.checkBoxCursorPlacement.Name = "checkBoxCursorPlacement";
             this.checkBoxCursorPlacement.Size = new System.Drawing.Size(104, 17);
             this.checkBoxCursorPlacement.TabIndex = 27;
             this.checkBoxCursorPlacement.Text = "Placering af mus";
             this.checkBoxCursorPlacement.UseVisualStyleBackColor = true;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(46, 146);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(39, 13);
+            this.label8.TabIndex = 28;
+            this.label8.Text = "x-aksis";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(145, 146);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(39, 13);
+            this.label9.TabIndex = 29;
+            this.label9.Text = "y-aksis";
+            // 
+            // textBoxSecondXAksis
+            // 
+            this.textBoxSecondXAksis.Location = new System.Drawing.Point(49, 162);
+            this.textBoxSecondXAksis.Name = "textBoxSecondXAksis";
+            this.textBoxSecondXAksis.Size = new System.Drawing.Size(93, 20);
+            this.textBoxSecondXAksis.TabIndex = 30;
+            this.textBoxSecondXAksis.Text = "1500";
+            // 
+            // textBoxSecondYAksis
+            // 
+            this.textBoxSecondYAksis.Location = new System.Drawing.Point(148, 162);
+            this.textBoxSecondYAksis.Name = "textBoxSecondYAksis";
+            this.textBoxSecondYAksis.Size = new System.Drawing.Size(90, 20);
+            this.textBoxSecondYAksis.TabIndex = 31;
+            this.textBoxSecondYAksis.Text = "600";
+            // 
+            // checkBoxSecondCursorPlacement
+            // 
+            this.checkBoxSecondCursorPlacement.AutoSize = true;
+            this.checkBoxSecondCursorPlacement.Location = new System.Drawing.Point(260, 164);
+            this.checkBoxSecondCursorPlacement.Name = "checkBoxSecondCursorPlacement";
+            this.checkBoxSecondCursorPlacement.Size = new System.Drawing.Size(137, 17);
+            this.checkBoxSecondCursorPlacement.TabIndex = 32;
+            this.checkBoxSecondCursorPlacement.Text = "Anden placering af mus";
+            this.checkBoxSecondCursorPlacement.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(507, 388);
+            this.Controls.Add(this.checkBoxSecondCursorPlacement);
+            this.Controls.Add(this.textBoxSecondYAksis);
+            this.Controls.Add(this.textBoxSecondXAksis);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.checkBoxCursorPlacement);
             this.Controls.Add(this.labelYAksis);
             this.Controls.Add(this.labelXAksis);
@@ -297,7 +345,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button buttonStart;
         private System.Windows.Forms.CheckBox checkBoxRandomNumber;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.TextBox textBoxMinimum;
         private System.Windows.Forms.TextBox textBoxMaximum;
         private System.Windows.Forms.Label label6;
@@ -307,6 +354,11 @@
         private System.Windows.Forms.Label labelXAksis;
         private System.Windows.Forms.Label labelYAksis;
         private System.Windows.Forms.CheckBox checkBoxCursorPlacement;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox textBoxSecondXAksis;
+        private System.Windows.Forms.TextBox textBoxSecondYAksis;
+        private System.Windows.Forms.CheckBox checkBoxSecondCursorPlacement;
     }
 }
 

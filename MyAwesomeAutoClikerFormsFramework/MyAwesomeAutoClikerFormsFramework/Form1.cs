@@ -64,25 +64,34 @@ namespace MyAwesomeAutoClikerFormsFramework
             {
                 if (Click1 == true)
                 {
-                    if (!checkBoxRandomNumber.Checked)
-                    {
-                        mouse_event(dwFlags: leftUp, dx: 0, dy: 0, cButtons: 0, dwExtraInfo: 0);
-                        Thread.Sleep(1);
-                        mouse_event(dwFlags: leftDown, dx: 0, dy: 0, cButtons: 0, dwExtraInfo: 0);
-                        Thread.Sleep(Intervals);
-                    }
-                    else if (checkBoxRandomNumber.Checked)
-                    {
-                        mouse_event(dwFlags: leftUp, dx: 0, dy: 0, cButtons: 0, dwExtraInfo: 0);
-                        Thread.Sleep(1);
-                        mouse_event(dwFlags: leftDown, dx: 0, dy: 0, cButtons: 0, dwExtraInfo: 0);
-                        RndNum = Next(Convert.ToInt32(textBoxMinimum.Text), Convert.ToInt32(textBoxMaximum.Text));
-                        RandomIntervals = Intervals + RndNum;
-                        Thread.Sleep(RandomIntervals);
-                    }
-
+                    MoveCursorOrNot();
+                    Click();
+                    MoveCursorSecondOrNot();
+                    Click();
                 }
                 Thread.Sleep(2);
+            }
+        }
+
+        private void Click()
+        {
+            RndNum = Next(Convert.ToInt32(textBoxMinimum.Text), Convert.ToInt32(textBoxMaximum.Text));
+            RandomIntervals = Intervals + RndNum;
+            mouse_event(dwFlags: leftUp, dx: 0, dy: 0, cButtons: 0, dwExtraInfo: 0);
+            Thread.Sleep(1);
+            mouse_event(dwFlags: leftDown, dx: 0, dy: 0, cButtons: 0, dwExtraInfo: 0);
+            CheckIfRandomBoxIsChecked();
+        }
+
+        private void CheckIfRandomBoxIsChecked()
+        {
+            if (checkBoxRandomNumber.Checked)
+            {
+                Thread.Sleep(RandomIntervals);
+            }
+            else if (!checkBoxRandomNumber.Checked)
+            {
+                Thread.Sleep(Intervals);
             }
         }
 
@@ -91,29 +100,38 @@ namespace MyAwesomeAutoClikerFormsFramework
             while (true)
             {
 
-                if (!buttonStart.Visible)
+                if (!buttonStart.Enabled)
                 {
                     Click1 = true;
                     Thread.Sleep(1);
                 }
-                else if (buttonStart.Visible)
+                else if (buttonStart.Enabled)
                 {
                     Click1 = false;
                     Thread.Sleep(1);
                 }
                 if (GetAsyncKeyState(Keys.Up) < 0)
                 {
-                    buttonStart.Visible = false;
-                    buttonStop.Visible = true;
+                    buttonStart.Enabled = false;
+                    buttonStop.Enabled = true;
                     Click1 = true;
                     Thread.Sleep(1);
                 }
                 else if (GetAsyncKeyState(Keys.Down) < 0)
                 {
-                    buttonStart.Visible = true;
-                    buttonStop.Visible = false;
+                    buttonStart.Enabled = true;
+                    buttonStop.Enabled = false;
                     Click1 = false;
                     Thread.Sleep(1);
+                }
+                if (!checkBoxCursorPlacement.Checked)
+                {
+                    checkBoxSecondCursorPlacement.Checked = false;
+                    checkBoxSecondCursorPlacement.Enabled = false;
+                }
+                else if (checkBoxCursorPlacement.Checked)
+                {
+                    checkBoxSecondCursorPlacement.Enabled = true;
                 }
                 Thread.Sleep(1);
             }
@@ -131,15 +149,11 @@ namespace MyAwesomeAutoClikerFormsFramework
             }
             else
             {
-                if (checkBoxCursorPlacement.Checked)
-                {
-                    MoveCursor();
-                }
 
                 TimeConverter();
                 Intervals = Hour + Minutes + Seconds + Miliseconds;
-                buttonStart.Visible = false;
-                buttonStop.Visible = true;
+                buttonStart.Enabled = false;
+                buttonStop.Enabled = true;
             }
         }
 
@@ -167,24 +181,27 @@ namespace MyAwesomeAutoClikerFormsFramework
             Miliseconds = Convert.ToInt32(textBoxMilisekunder.Text);
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-
-        }
-
         private void buttonStop_Click(object sender, EventArgs e)
         {
-            buttonStart.Visible = true;
-            buttonStop.Visible = false;
+            buttonStart.Enabled = true;
+            buttonStop.Enabled = false;
         }
 
-        private void MoveCursor()
+        private void MoveCursorOrNot()
         {
-            // Set the Current cursor, move the cursor's Position,
-            // and set its clipping rectangle to the form. 
-
-            this.Cursor = new Cursor(Cursor.Current.Handle);
-            Cursor.Position = new Point(Convert.ToInt32(textBoxXAksis.Text), Convert.ToInt32(textBoxYAksis.Text));
+            if (checkBoxCursorPlacement.Checked)
+            {
+                Cursor = new Cursor(Cursor.Current.Handle);
+                Cursor.Position = new Point(Convert.ToInt32(textBoxXAksis.Text), Convert.ToInt32(textBoxYAksis.Text));
+            }
+        }
+        private void MoveCursorSecondOrNot()
+        {
+            if (checkBoxSecondCursorPlacement.Checked)
+            {
+                Cursor = new Cursor(Cursor.Current.Handle);
+                Cursor.Position = new Point(Convert.ToInt32(textBoxSecondXAksis.Text), Convert.ToInt32(textBoxSecondYAksis.Text));
+            }
         }
     }
 }
