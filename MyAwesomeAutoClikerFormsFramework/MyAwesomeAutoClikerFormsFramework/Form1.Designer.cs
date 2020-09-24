@@ -47,6 +47,11 @@
             this.textBoxMaximum = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.textBoxXAksis = new System.Windows.Forms.TextBox();
+            this.textBoxYAksis = new System.Windows.Forms.TextBox();
+            this.labelXAksis = new System.Windows.Forms.Label();
+            this.labelYAksis = new System.Windows.Forms.Label();
+            this.checkBoxCursorPlacement = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // textBoxTimer
@@ -154,7 +159,7 @@
             // checkBoxRandomNumber
             // 
             this.checkBoxRandomNumber.AutoSize = true;
-            this.checkBoxRandomNumber.Location = new System.Drawing.Point(49, 137);
+            this.checkBoxRandomNumber.Location = new System.Drawing.Point(260, 86);
             this.checkBoxRandomNumber.Name = "checkBoxRandomNumber";
             this.checkBoxRandomNumber.Size = new System.Drawing.Size(80, 17);
             this.checkBoxRandomNumber.TabIndex = 18;
@@ -171,6 +176,7 @@
             this.textBoxMinimum.Name = "textBoxMinimum";
             this.textBoxMinimum.Size = new System.Drawing.Size(93, 20);
             this.textBoxMinimum.TabIndex = 19;
+            this.textBoxMinimum.Text = "0";
             // 
             // textBoxMaximum
             // 
@@ -178,6 +184,7 @@
             this.textBoxMaximum.Name = "textBoxMaximum";
             this.textBoxMaximum.Size = new System.Drawing.Size(93, 20);
             this.textBoxMaximum.TabIndex = 20;
+            this.textBoxMaximum.Text = "1";
             // 
             // label6
             // 
@@ -191,17 +198,64 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(148, 68);
+            this.label7.Location = new System.Drawing.Point(145, 68);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(51, 13);
             this.label7.TabIndex = 22;
             this.label7.Text = "Maximum";
+            // 
+            // textBoxXAksis
+            // 
+            this.textBoxXAksis.Location = new System.Drawing.Point(49, 123);
+            this.textBoxXAksis.Name = "textBoxXAksis";
+            this.textBoxXAksis.Size = new System.Drawing.Size(93, 20);
+            this.textBoxXAksis.TabIndex = 23;
+            // 
+            // textBoxYAksis
+            // 
+            this.textBoxYAksis.Location = new System.Drawing.Point(148, 123);
+            this.textBoxYAksis.Name = "textBoxYAksis";
+            this.textBoxYAksis.Size = new System.Drawing.Size(90, 20);
+            this.textBoxYAksis.TabIndex = 24;
+            // 
+            // labelXAksis
+            // 
+            this.labelXAksis.AutoSize = true;
+            this.labelXAksis.Location = new System.Drawing.Point(46, 107);
+            this.labelXAksis.Name = "labelXAksis";
+            this.labelXAksis.Size = new System.Drawing.Size(39, 13);
+            this.labelXAksis.TabIndex = 25;
+            this.labelXAksis.Text = "x-aksis";
+            // 
+            // labelYAksis
+            // 
+            this.labelYAksis.AutoSize = true;
+            this.labelYAksis.Location = new System.Drawing.Point(145, 107);
+            this.labelYAksis.Name = "labelYAksis";
+            this.labelYAksis.Size = new System.Drawing.Size(39, 13);
+            this.labelYAksis.TabIndex = 26;
+            this.labelYAksis.Text = "y-aksis";
+            // 
+            // checkBoxCursorPlacement
+            // 
+            this.checkBoxCursorPlacement.AutoSize = true;
+            this.checkBoxCursorPlacement.Location = new System.Drawing.Point(260, 123);
+            this.checkBoxCursorPlacement.Name = "checkBoxCursorPlacement";
+            this.checkBoxCursorPlacement.Size = new System.Drawing.Size(104, 17);
+            this.checkBoxCursorPlacement.TabIndex = 27;
+            this.checkBoxCursorPlacement.Text = "Placering af mus";
+            this.checkBoxCursorPlacement.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(507, 388);
+            this.Controls.Add(this.checkBoxCursorPlacement);
+            this.Controls.Add(this.labelYAksis);
+            this.Controls.Add(this.labelXAksis);
+            this.Controls.Add(this.textBoxYAksis);
+            this.Controls.Add(this.textBoxXAksis);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textBoxMaximum);
@@ -246,6 +300,11 @@
         private System.Windows.Forms.TextBox textBoxMaximum;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textBoxXAksis;
+        private System.Windows.Forms.TextBox textBoxYAksis;
+        private System.Windows.Forms.Label labelXAksis;
+        private System.Windows.Forms.Label labelYAksis;
+        private System.Windows.Forms.CheckBox checkBoxCursorPlacement;
     }
 }
 

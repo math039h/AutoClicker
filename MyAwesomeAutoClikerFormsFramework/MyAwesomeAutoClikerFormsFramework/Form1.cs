@@ -26,21 +26,19 @@ namespace MyAwesomeAutoClikerFormsFramework
         private int minutes;
         private int seconds;
         private int miliseconds;
-        public int intervals = 5;
+        private int intervals;
         public int parsedValue;
-        public bool click = false;
-        private Random randomNumber;
-        private int milisecondsRandom;
+        private bool click1 = false;
         private int rndNum;
         private int randomIntervals;
         public int Hour { get => hour; set => hour = value; }
         public int Minutes { get => minutes; set => minutes = value; }
         public int Seconds { get => seconds; set => seconds = value; }
         public int Miliseconds { get => miliseconds; set => miliseconds = 1; }
-        public Random RandomNumber { get => randomNumber; set => randomNumber = value; }
-        public int MilisecondsRandom { get => milisecondsRandom; set => milisecondsRandom = value; }
         public int RndNum { get => rndNum; set => rndNum = value; }
         public int RandomIntervals { get => randomIntervals; set => randomIntervals = value; }
+        public int Intervals { get => intervals; set => intervals = value; }
+        public bool Click1 { get => click1; set => click1 = value; }
 
         public Form1()
         {
@@ -60,14 +58,14 @@ namespace MyAwesomeAutoClikerFormsFramework
         {
             while (true)
             {
-                if (click == true)
+                if (Click1 == true)
                 {
                     if (!checkBoxRandomNumber.Checked)
                     {
                         mouse_event(dwFlags: leftUp, dx: 0, dy: 0, cButtons: 0, dwExtraInfo: 0);
                         Thread.Sleep(1);
                         mouse_event(dwFlags: leftDown, dx: 0, dy: 0, cButtons: 0, dwExtraInfo: 0);
-                        Thread.Sleep(intervals);
+                        Thread.Sleep(Intervals);
                     }
                     else if (checkBoxRandomNumber.Checked)
                     {
@@ -75,7 +73,7 @@ namespace MyAwesomeAutoClikerFormsFramework
                         Thread.Sleep(1);
                         mouse_event(dwFlags: leftDown, dx: 0, dy: 0, cButtons: 0, dwExtraInfo: 0);
                         RndNum = Next(Convert.ToInt32(textBoxMinimum.Text), Convert.ToInt32(textBoxMaximum.Text));
-                        RandomIntervals = intervals + RndNum;
+                        RandomIntervals = Intervals + RndNum;
                         Thread.Sleep(RandomIntervals);
                     }
 
@@ -91,26 +89,26 @@ namespace MyAwesomeAutoClikerFormsFramework
 
                 if (!buttonStart.Visible)
                 {
-                    click = true;
+                    Click1 = true;
                     Thread.Sleep(1);
                 }
                 else if (buttonStart.Visible)
                 {
-                    click = false;
+                    Click1 = false;
                     Thread.Sleep(1);
                 }
                 if (GetAsyncKeyState(Keys.Up) < 0)
                 {
                     buttonStart.Visible = false;
                     buttonStop.Visible = true;
-                    click = true;
+                    Click1 = true;
                     Thread.Sleep(1);
                 }
                 else if (GetAsyncKeyState(Keys.Down) < 0)
                 {
                     buttonStart.Visible = true;
                     buttonStop.Visible = false;
-                    click = false;
+                    Click1 = false;
                     Thread.Sleep(1);
                 }
                 Thread.Sleep(1);
@@ -130,7 +128,7 @@ namespace MyAwesomeAutoClikerFormsFramework
             else
             {
                 TimeConverter();
-                intervals = Hour + Minutes + Seconds + Miliseconds;
+                Intervals = Hour + Minutes + Seconds + Miliseconds;
                 buttonStart.Visible = false;
                 buttonStop.Visible = true;
             }
