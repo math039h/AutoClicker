@@ -110,6 +110,23 @@ namespace MyAwesomeAutoClikerFormsFramework
                     Click1 = false;
                     Thread.Sleep(1);
                 }
+                if (GetAsyncKeyState(Keys.F6) < 0)
+                {
+                    if (buttonStart.Enabled == true)
+                    {
+                        buttonStart.Enabled = false;
+                        buttonStop.Enabled = true;
+                        Click1 = true;
+                        Thread.Sleep(200);
+                    }
+                    else if (buttonStop.Enabled == true)
+                    {
+                        buttonStart.Enabled = true;
+                        buttonStop.Enabled = false;
+                        Click1 = false;
+                        Thread.Sleep(200);
+                    }
+                }
                 if (GetAsyncKeyState(Keys.Up) < 0)
                 {
                     buttonStart.Enabled = false;

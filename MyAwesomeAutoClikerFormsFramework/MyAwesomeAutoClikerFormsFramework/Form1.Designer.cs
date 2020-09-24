@@ -109,7 +109,7 @@
             this.buttonStop.Name = "buttonStop";
             this.buttonStop.Size = new System.Drawing.Size(192, 43);
             this.buttonStop.TabIndex = 12;
-            this.buttonStop.Text = "Stop";
+            this.buttonStop.Text = "Stop (F6)";
             this.buttonStop.UseVisualStyleBackColor = true;
             this.buttonStop.Click += new System.EventHandler(this.buttonStop_Click);
             // 
@@ -155,7 +155,7 @@
             this.buttonStart.Name = "buttonStart";
             this.buttonStart.Size = new System.Drawing.Size(192, 43);
             this.buttonStart.TabIndex = 17;
-            this.buttonStart.Text = "Start";
+            this.buttonStart.Text = "Start (F6)";
             this.buttonStart.UseVisualStyleBackColor = true;
             this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
             // 
