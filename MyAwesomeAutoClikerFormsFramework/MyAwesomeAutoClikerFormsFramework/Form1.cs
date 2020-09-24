@@ -31,14 +31,18 @@ namespace MyAwesomeAutoClikerFormsFramework
         private bool click1 = false;
         private int rndNum;
         private int randomIntervals;
+        private int mouseX;
+        private int mouseY;
         public int Hour { get => hour; set => hour = value; }
         public int Minutes { get => minutes; set => minutes = value; }
         public int Seconds { get => seconds; set => seconds = value; }
-        public int Miliseconds { get => miliseconds; set => miliseconds = 1; }
         public int RndNum { get => rndNum; set => rndNum = value; }
         public int RandomIntervals { get => randomIntervals; set => randomIntervals = value; }
         public int Intervals { get => intervals; set => intervals = value; }
         public bool Click1 { get => click1; set => click1 = value; }
+        public int Miliseconds { get => miliseconds; set => miliseconds = value; }
+        public int MouseX { get => mouseX; set => mouseX = value; }
+        public int MouseY { get => mouseY; set => mouseY = value; }
 
         public Form1()
         {
@@ -127,6 +131,11 @@ namespace MyAwesomeAutoClikerFormsFramework
             }
             else
             {
+                if (checkBoxCursorPlacement.Checked)
+                {
+                    MoveCursor();
+                }
+
                 TimeConverter();
                 Intervals = Hour + Minutes + Seconds + Miliseconds;
                 buttonStart.Visible = false;
@@ -167,6 +176,15 @@ namespace MyAwesomeAutoClikerFormsFramework
         {
             buttonStart.Visible = true;
             buttonStop.Visible = false;
+        }
+
+        private void MoveCursor()
+        {
+            // Set the Current cursor, move the cursor's Position,
+            // and set its clipping rectangle to the form. 
+
+            this.Cursor = new Cursor(Cursor.Current.Handle);
+            Cursor.Position = new Point(Convert.ToInt32(textBoxXAksis.Text), Convert.ToInt32(textBoxYAksis.Text));
         }
     }
 }

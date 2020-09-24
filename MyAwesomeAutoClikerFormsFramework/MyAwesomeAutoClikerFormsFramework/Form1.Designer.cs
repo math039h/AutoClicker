@@ -210,6 +210,7 @@
             this.textBoxXAksis.Name = "textBoxXAksis";
             this.textBoxXAksis.Size = new System.Drawing.Size(93, 20);
             this.textBoxXAksis.TabIndex = 23;
+            this.textBoxXAksis.Text = "100";
             // 
             // textBoxYAksis
             // 
@@ -217,6 +218,7 @@
             this.textBoxYAksis.Name = "textBoxYAksis";
             this.textBoxYAksis.Size = new System.Drawing.Size(90, 20);
             this.textBoxYAksis.TabIndex = 24;
+            this.textBoxYAksis.Text = "100";
             // 
             // labelXAksis
             // 
