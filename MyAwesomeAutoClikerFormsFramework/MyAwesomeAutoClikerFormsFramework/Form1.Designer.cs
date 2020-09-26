@@ -55,6 +55,8 @@
             this.textBoxSecondXAksis = new System.Windows.Forms.TextBox();
             this.textBoxSecondYAksis = new System.Windows.Forms.TextBox();
             this.checkBoxSecondCursorPlacement = new System.Windows.Forms.CheckBox();
+            this.buttonStartNetflixAndChill = new System.Windows.Forms.Button();
+            this.buttonStopNetflixAndChill = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBoxTimer
@@ -291,11 +293,34 @@
             this.checkBoxSecondCursorPlacement.Text = "Anden placering af mus";
             this.checkBoxSecondCursorPlacement.UseVisualStyleBackColor = true;
             // 
+            // buttonStartNetflixAndChill
+            // 
+            this.buttonStartNetflixAndChill.Location = new System.Drawing.Point(49, 295);
+            this.buttonStartNetflixAndChill.Name = "buttonStartNetflixAndChill";
+            this.buttonStartNetflixAndChill.Size = new System.Drawing.Size(192, 43);
+            this.buttonStartNetflixAndChill.TabIndex = 34;
+            this.buttonStartNetflixAndChill.Text = "Start Netflix And Chill (N)";
+            this.buttonStartNetflixAndChill.UseVisualStyleBackColor = true;
+            this.buttonStartNetflixAndChill.Click += new System.EventHandler(this.buttonNetflixAndChill_Click);
+            // 
+            // buttonStopNetflixAndChill
+            // 
+            this.buttonStopNetflixAndChill.Enabled = false;
+            this.buttonStopNetflixAndChill.Location = new System.Drawing.Point(248, 296);
+            this.buttonStopNetflixAndChill.Name = "buttonStopNetflixAndChill";
+            this.buttonStopNetflixAndChill.Size = new System.Drawing.Size(191, 42);
+            this.buttonStopNetflixAndChill.TabIndex = 35;
+            this.buttonStopNetflixAndChill.Text = "Stop Netflix And Chill (N)";
+            this.buttonStopNetflixAndChill.UseVisualStyleBackColor = true;
+            this.buttonStopNetflixAndChill.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(507, 388);
+            this.Controls.Add(this.buttonStopNetflixAndChill);
+            this.Controls.Add(this.buttonStartNetflixAndChill);
             this.Controls.Add(this.checkBoxSecondCursorPlacement);
             this.Controls.Add(this.textBoxSecondYAksis);
             this.Controls.Add(this.textBoxSecondXAksis);
@@ -359,6 +384,8 @@
         private System.Windows.Forms.TextBox textBoxSecondXAksis;
         private System.Windows.Forms.TextBox textBoxSecondYAksis;
         private System.Windows.Forms.CheckBox checkBoxSecondCursorPlacement;
+        private System.Windows.Forms.Button buttonStartNetflixAndChill;
+        private System.Windows.Forms.Button buttonStopNetflixAndChill;
     }
 }
 

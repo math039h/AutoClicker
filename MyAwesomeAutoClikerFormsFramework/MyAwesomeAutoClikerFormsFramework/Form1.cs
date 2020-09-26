@@ -33,6 +33,7 @@ namespace MyAwesomeAutoClikerFormsFramework
         private int randomIntervals;
         private int mouseX;
         private int mouseY;
+        private bool runNetflixAndChill;
         public int Hour { get => hour; set => hour = value; }
         public int Minutes { get => minutes; set => minutes = value; }
         public int Seconds { get => seconds; set => seconds = value; }
@@ -43,6 +44,7 @@ namespace MyAwesomeAutoClikerFormsFramework
         public int Miliseconds { get => miliseconds; set => miliseconds = value; }
         public int MouseX { get => mouseX; set => mouseX = value; }
         public int MouseY { get => mouseY; set => mouseY = value; }
+        public bool RunNetflixAndChill { get => runNetflixAndChill; set => runNetflixAndChill = value; }
 
         public Form1()
         {
@@ -66,8 +68,10 @@ namespace MyAwesomeAutoClikerFormsFramework
                 {
                     MoveCursorOrNot();
                     Click();
+                    CheckIfRandomBoxIsChecked();
                     MoveCursorSecondOrNot();
                     Click();
+                    CheckIfRandomBoxIsChecked();
                 }
                 Thread.Sleep(2);
             }
@@ -75,16 +79,17 @@ namespace MyAwesomeAutoClikerFormsFramework
 
         private void Click()
         {
-            RndNum = Next(Convert.ToInt32(textBoxMinimum.Text), Convert.ToInt32(textBoxMaximum.Text));
-            RandomIntervals = Intervals + RndNum;
             mouse_event(dwFlags: leftUp, dx: 0, dy: 0, cButtons: 0, dwExtraInfo: 0);
             Thread.Sleep(1);
             mouse_event(dwFlags: leftDown, dx: 0, dy: 0, cButtons: 0, dwExtraInfo: 0);
-            CheckIfRandomBoxIsChecked();
+            Thread.Sleep(1);
+            mouse_event(dwFlags: leftUp, dx: 0, dy: 0, cButtons: 0, dwExtraInfo: 0);
         }
 
         private void CheckIfRandomBoxIsChecked()
         {
+            RndNum = Next(Convert.ToInt32(textBoxMinimum.Text), Convert.ToInt32(textBoxMaximum.Text));
+            RandomIntervals = Intervals + RndNum;
             if (checkBoxRandomNumber.Checked)
             {
                 Thread.Sleep(RandomIntervals);
@@ -99,7 +104,6 @@ namespace MyAwesomeAutoClikerFormsFramework
         {
             while (true)
             {
-
                 if (!buttonStart.Enabled)
                 {
                     Click1 = true;
@@ -112,17 +116,21 @@ namespace MyAwesomeAutoClikerFormsFramework
                 }
                 if (GetAsyncKeyState(Keys.F6) < 0)
                 {
-                    if (buttonStart.Enabled == true)
+                    if (buttonStart.Enabled)
                     {
                         buttonStart.Enabled = false;
                         buttonStop.Enabled = true;
+                        buttonStartNetflixAndChill.Enabled = false;
+                        buttonStopNetflixAndChill.Enabled = false;
                         Click1 = true;
                         Thread.Sleep(200);
                     }
-                    else if (buttonStop.Enabled == true)
+                    else if (buttonStop.Enabled)
                     {
                         buttonStart.Enabled = true;
                         buttonStop.Enabled = false;
+                        buttonStartNetflixAndChill.Enabled = true;
+                        buttonStopNetflixAndChill.Enabled = false;
                         Click1 = false;
                         Thread.Sleep(200);
                     }
@@ -174,6 +182,38 @@ namespace MyAwesomeAutoClikerFormsFramework
                     textBoxMinimum.Enabled = true;
                     textBoxMaximum.Enabled = true;
                 }
+                if (!buttonStartNetflixAndChill.Enabled)
+                {
+                    RunNetflixAndChill = true;
+                    Thread.Sleep(1);
+                }
+                else if (buttonStart.Enabled)
+                {
+                    RunNetflixAndChill = false;
+                    Thread.Sleep(1);
+                }
+                if (GetAsyncKeyState(Keys.N) < 0)
+                {
+                    if (buttonStartNetflixAndChill.Enabled)
+                    {
+                        buttonStartNetflixAndChill.Enabled = false;
+                        buttonStopNetflixAndChill.Enabled = true;
+                        buttonStart.Enabled = false;
+                        buttonStop.Enabled = false;
+                        RunNetflixAndChill = true;
+                        NetFlixAndChill();
+                        Thread.Sleep(200);
+                    }
+                    else if (buttonStopNetflixAndChill.Enabled)
+                    {
+                        buttonStartNetflixAndChill.Enabled = true;
+                        buttonStopNetflixAndChill.Enabled = false;
+                        buttonStart.Enabled = true;
+                        buttonStop.Enabled = false;
+                        RunNetflixAndChill = false;
+                        Thread.Sleep(200);
+                    }
+                }
                 Thread.Sleep(1);
             }
         }
@@ -190,11 +230,10 @@ namespace MyAwesomeAutoClikerFormsFramework
             }
             else
             {
-
                 TimeConverter();
-                Intervals = Hour + Minutes + Seconds + Miliseconds;
                 buttonStart.Enabled = false;
                 buttonStop.Enabled = true;
+                buttonStartNetflixAndChill.Enabled = false;
             }
         }
 
@@ -220,12 +259,15 @@ namespace MyAwesomeAutoClikerFormsFramework
             Minutes = Convert.ToInt32(textBoxMinuter.Text) * 60000;
             Seconds = Convert.ToInt32(textBoxSekunder.Text) * 1000;
             Miliseconds = Convert.ToInt32(textBoxMilisekunder.Text);
+            Intervals = Hour + Minutes + Seconds + Miliseconds;
         }
 
         private void buttonStop_Click(object sender, EventArgs e)
         {
             buttonStart.Enabled = true;
             buttonStop.Enabled = false;
+            buttonStartNetflixAndChill.Enabled = true;
+            buttonStopNetflixAndChill.Enabled = false;
         }
 
         private void MoveCursorOrNot()
@@ -242,6 +284,69 @@ namespace MyAwesomeAutoClikerFormsFramework
             {
                 Cursor = new Cursor(Cursor.Current.Handle);
                 Cursor.Position = new Point(Convert.ToInt32(textBoxSecondXAksis.Text), Convert.ToInt32(textBoxSecondYAksis.Text));
+            }
+        }
+        private void MoveCursor(int MoveX, int MoveY)
+        {
+            Cursor = new Cursor(Cursor.Current.Handle);
+            Cursor.Position = new Point(MoveX, MoveY);
+        }
+        private void buttonNetflixAndChill_Click(object sender, EventArgs e)
+        {
+            if (!int.TryParse(textBoxMilisekunder.Text, out parsedValue) ||
+                !int.TryParse(textBoxSekunder.Text, out parsedValue) ||
+                !int.TryParse(textBoxMinuter.Text, out parsedValue) ||
+                !int.TryParse(textBoxTimer.Text, out parsedValue))
+            {
+                MessageBox.Show("indtast venligst et tal");
+                return;
+            }
+            else
+            {
+                TimeConverter();
+                buttonStartNetflixAndChill.Enabled = false;
+                buttonStopNetflixAndChill.Enabled = true;
+                buttonStart.Enabled = false;
+                NetFlixAndChill();
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            buttonStartNetflixAndChill.Enabled = true;
+            buttonStopNetflixAndChill.Enabled = false;
+            buttonStart.Enabled = true;
+            RunNetflixAndChill = false;
+        }
+
+        private void NetFlixAndChill()
+        {
+            while (true)
+            {
+                if (RunNetflixAndChill == true)
+                {
+                    SendKeys.SendWait("{ENTER}");
+                    Thread.Sleep(200);
+                    SendKeys.SendWait("%({tab})");
+                    Thread.Sleep(200);
+                    MoveCursor(1600, 570);
+                    Thread.Sleep(200);
+                    Click();
+                    Thread.Sleep(1200);
+                    SendKeys.SendWait("%({tab})");
+                    Thread.Sleep(200);
+                    SendKeys.SendWait("{ENTER}");
+                    Thread.Sleep(200);
+                    TimeConverter();
+                    CheckIfRandomBoxIsChecked();
+                    if (GetAsyncKeyState(Keys.N) < 0)
+                    {
+                        RunNetflixAndChill = false;
+                        buttonStopNetflixAndChill.Enabled = false;
+                        buttonStartNetflixAndChill.Enabled = true;
+                    }
+                }
+                Thread.Sleep(2);
             }
         }
     }
