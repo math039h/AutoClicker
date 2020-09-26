@@ -145,10 +145,34 @@ namespace MyAwesomeAutoClikerFormsFramework
                 {
                     checkBoxSecondCursorPlacement.Checked = false;
                     checkBoxSecondCursorPlacement.Enabled = false;
+                    textBoxXAksis.Enabled = false;
+                    textBoxYAksis.Enabled = false;
                 }
                 else if (checkBoxCursorPlacement.Checked)
                 {
                     checkBoxSecondCursorPlacement.Enabled = true;
+                    textBoxXAksis.Enabled = true;
+                    textBoxYAksis.Enabled = true;
+                }
+                if (!checkBoxSecondCursorPlacement.Checked)
+                {
+                    textBoxSecondXAksis.Enabled = false;
+                    textBoxSecondYAksis.Enabled = false;
+                }
+                else if (checkBoxSecondCursorPlacement.Checked)
+                {
+                    textBoxSecondXAksis.Enabled = true;
+                    textBoxSecondYAksis.Enabled = true;
+                }
+                if (!checkBoxRandomNumber.Checked)
+                {
+                    textBoxMinimum.Enabled = false;
+                    textBoxMaximum.Enabled = false;
+                }
+                else if (checkBoxRandomNumber.Checked)
+                {
+                    textBoxMinimum.Enabled = true;
+                    textBoxMaximum.Enabled = true;
                 }
                 Thread.Sleep(1);
             }
