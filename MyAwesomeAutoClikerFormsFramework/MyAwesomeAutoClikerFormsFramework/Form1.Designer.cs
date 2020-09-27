@@ -57,6 +57,11 @@
             this.checkBoxSecondCursorPlacement = new System.Windows.Forms.CheckBox();
             this.buttonStartNetflixAndChill = new System.Windows.Forms.Button();
             this.buttonStopNetflixAndChill = new System.Windows.Forms.Button();
+            this.textBoxNetflixXAksis = new System.Windows.Forms.TextBox();
+            this.textBoxNetflixYAksis = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.checkBoxNetflixCursorPlacement = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // textBoxTimer
@@ -86,7 +91,7 @@
             this.textBoxMinuter.Name = "textBoxMinuter";
             this.textBoxMinuter.Size = new System.Drawing.Size(93, 20);
             this.textBoxMinuter.TabIndex = 9;
-            this.textBoxMinuter.Text = "0";
+            this.textBoxMinuter.Text = "2";
             // 
             // textBoxSekunder
             // 
@@ -94,7 +99,7 @@
             this.textBoxSekunder.Name = "textBoxSekunder";
             this.textBoxSekunder.Size = new System.Drawing.Size(93, 20);
             this.textBoxSekunder.TabIndex = 10;
-            this.textBoxSekunder.Text = "0";
+            this.textBoxSekunder.Text = "35";
             // 
             // textBoxMilisekunder
             // 
@@ -164,6 +169,8 @@
             // checkBoxRandomNumber
             // 
             this.checkBoxRandomNumber.AutoSize = true;
+            this.checkBoxRandomNumber.Checked = true;
+            this.checkBoxRandomNumber.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxRandomNumber.Location = new System.Drawing.Point(260, 86);
             this.checkBoxRandomNumber.Name = "checkBoxRandomNumber";
             this.checkBoxRandomNumber.Size = new System.Drawing.Size(80, 17);
@@ -177,7 +184,7 @@
             this.textBoxMinimum.Name = "textBoxMinimum";
             this.textBoxMinimum.Size = new System.Drawing.Size(93, 20);
             this.textBoxMinimum.TabIndex = 19;
-            this.textBoxMinimum.Text = "0";
+            this.textBoxMinimum.Text = "1";
             // 
             // textBoxMaximum
             // 
@@ -185,7 +192,7 @@
             this.textBoxMaximum.Name = "textBoxMaximum";
             this.textBoxMaximum.Size = new System.Drawing.Size(93, 20);
             this.textBoxMaximum.TabIndex = 20;
-            this.textBoxMaximum.Text = "1";
+            this.textBoxMaximum.Text = "1001";
             // 
             // label6
             // 
@@ -217,7 +224,7 @@
             // 
             this.textBoxYAksis.Location = new System.Drawing.Point(148, 123);
             this.textBoxYAksis.Name = "textBoxYAksis";
-            this.textBoxYAksis.Size = new System.Drawing.Size(90, 20);
+            this.textBoxYAksis.Size = new System.Drawing.Size(93, 20);
             this.textBoxYAksis.TabIndex = 24;
             this.textBoxYAksis.Text = "600";
             // 
@@ -279,7 +286,7 @@
             // 
             this.textBoxSecondYAksis.Location = new System.Drawing.Point(148, 162);
             this.textBoxSecondYAksis.Name = "textBoxSecondYAksis";
-            this.textBoxSecondYAksis.Size = new System.Drawing.Size(90, 20);
+            this.textBoxSecondYAksis.Size = new System.Drawing.Size(93, 20);
             this.textBoxSecondYAksis.TabIndex = 31;
             this.textBoxSecondYAksis.Text = "600";
             // 
@@ -314,11 +321,60 @@
             this.buttonStopNetflixAndChill.UseVisualStyleBackColor = true;
             this.buttonStopNetflixAndChill.Click += new System.EventHandler(this.button1_Click);
             // 
+            // textBoxNetflixXAksis
+            // 
+            this.textBoxNetflixXAksis.Location = new System.Drawing.Point(49, 205);
+            this.textBoxNetflixXAksis.Name = "textBoxNetflixXAksis";
+            this.textBoxNetflixXAksis.Size = new System.Drawing.Size(93, 20);
+            this.textBoxNetflixXAksis.TabIndex = 36;
+            this.textBoxNetflixXAksis.Text = "0";
+            // 
+            // textBoxNetflixYAksis
+            // 
+            this.textBoxNetflixYAksis.Location = new System.Drawing.Point(148, 205);
+            this.textBoxNetflixYAksis.Name = "textBoxNetflixYAksis";
+            this.textBoxNetflixYAksis.Size = new System.Drawing.Size(90, 20);
+            this.textBoxNetflixYAksis.TabIndex = 37;
+            this.textBoxNetflixYAksis.Text = "0";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(46, 189);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(39, 13);
+            this.label10.TabIndex = 38;
+            this.label10.Text = "x-aksis";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(145, 189);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(39, 13);
+            this.label11.TabIndex = 39;
+            this.label11.Text = "y-aksis";
+            // 
+            // checkBoxNetflixCursorPlacement
+            // 
+            this.checkBoxNetflixCursorPlacement.AutoSize = true;
+            this.checkBoxNetflixCursorPlacement.Location = new System.Drawing.Point(260, 207);
+            this.checkBoxNetflixCursorPlacement.Name = "checkBoxNetflixCursorPlacement";
+            this.checkBoxNetflixCursorPlacement.Size = new System.Drawing.Size(93, 17);
+            this.checkBoxNetflixCursorPlacement.TabIndex = 40;
+            this.checkBoxNetflixCursorPlacement.Text = "Netflix Custom";
+            this.checkBoxNetflixCursorPlacement.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(507, 388);
+            this.Controls.Add(this.checkBoxNetflixCursorPlacement);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.textBoxNetflixYAksis);
+            this.Controls.Add(this.textBoxNetflixXAksis);
             this.Controls.Add(this.buttonStopNetflixAndChill);
             this.Controls.Add(this.buttonStartNetflixAndChill);
             this.Controls.Add(this.checkBoxSecondCursorPlacement);
@@ -386,6 +442,11 @@
         private System.Windows.Forms.CheckBox checkBoxSecondCursorPlacement;
         private System.Windows.Forms.Button buttonStartNetflixAndChill;
         private System.Windows.Forms.Button buttonStopNetflixAndChill;
+        private System.Windows.Forms.TextBox textBoxNetflixXAksis;
+        private System.Windows.Forms.TextBox textBoxNetflixYAksis;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.CheckBox checkBoxNetflixCursorPlacement;
     }
 }
 

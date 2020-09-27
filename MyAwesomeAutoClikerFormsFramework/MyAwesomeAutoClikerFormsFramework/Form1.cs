@@ -214,6 +214,16 @@ namespace MyAwesomeAutoClikerFormsFramework
                         Thread.Sleep(200);
                     }
                 }
+                if (checkBoxNetflixCursorPlacement.Checked)
+                {
+                    textBoxNetflixXAksis.Enabled = true;
+                    textBoxNetflixYAksis.Enabled = true;
+                }
+                else if (!checkBoxNetflixCursorPlacement.Checked)
+                {
+                    textBoxNetflixXAksis.Enabled = false;
+                    textBoxNetflixYAksis.Enabled = false;
+                }
                 Thread.Sleep(1);
             }
         }
@@ -291,6 +301,11 @@ namespace MyAwesomeAutoClikerFormsFramework
             Cursor = new Cursor(Cursor.Current.Handle);
             Cursor.Position = new Point(MoveX, MoveY);
         }
+        private void MoveCursorNetflixCustom()
+        {
+            Cursor = new Cursor(Cursor.Current.Handle);
+            Cursor.Position = new Point(Convert.ToInt32(textBoxNetflixXAksis.Text), Convert.ToInt32(textBoxNetflixYAksis.Text));
+        }
         private void buttonNetflixAndChill_Click(object sender, EventArgs e)
         {
             if (!int.TryParse(textBoxMilisekunder.Text, out parsedValue) ||
@@ -329,7 +344,14 @@ namespace MyAwesomeAutoClikerFormsFramework
                     Thread.Sleep(200);
                     SendKeys.SendWait("%({tab})");
                     Thread.Sleep(200);
-                    MoveCursor(1600, 570);
+                    if (checkBoxNetflixCursorPlacement.Checked)
+                    {
+                        MoveCursorNetflixCustom();
+                    }
+                    else if (!checkBoxNetflixCursorPlacement.Checked)
+                    {
+                        MoveCursor(1600, 570);
+                    }
                     Thread.Sleep(200);
                     Click();
                     Thread.Sleep(1200);
