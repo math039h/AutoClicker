@@ -68,10 +68,11 @@ namespace MyAwesomeAutoClikerFormsFramework
                 {
                     MoveCursorOrNot();
                     Click();
-                    CheckIfRandomBoxIsChecked();
+                    CheckIfRandomBoxIsChecked(intervals);
                     MoveCursorSecondOrNot();
                     Click();
-                    CheckIfRandomBoxIsChecked();
+                    CheckIfRandomBoxIsChecked(intervals);
+                    Thread.Sleep(60000 * 2 + 1000 * 35);
                 }
                 Thread.Sleep(2);
             }
@@ -86,17 +87,22 @@ namespace MyAwesomeAutoClikerFormsFramework
             mouse_event(dwFlags: leftUp, dx: 0, dy: 0, cButtons: 0, dwExtraInfo: 0);
         }
 
-        private void CheckIfRandomBoxIsChecked()
+        private void CheckIfRandomBoxIsChecked(int number)
         {
+            number = intervals / 2;
             RndNum = Next(Convert.ToInt32(textBoxMinimum.Text), Convert.ToInt32(textBoxMaximum.Text));
             RandomIntervals = Intervals + RndNum;
             if (checkBoxRandomNumber.Checked)
             {
                 Thread.Sleep(RandomIntervals);
             }
-            else if (!checkBoxRandomNumber.Checked)
+            else if (!checkBoxRandomNumber.Checked || !checkBoxCursorPlacement.Checked)
             {
                 Thread.Sleep(Intervals);
+            }
+            else if (checkBoxCursorPlacement.Checked)
+            {
+                Thread.Sleep(intervals / number);
             }
         }
 
@@ -201,7 +207,7 @@ namespace MyAwesomeAutoClikerFormsFramework
                         buttonStart.Enabled = false;
                         buttonStop.Enabled = false;
                         RunNetflixAndChill = true;
-                        NetFlixAndChill();
+                        //NetFlixAndChill();
                         Thread.Sleep(200);
                     }
                     else if (buttonStopNetflixAndChill.Enabled)
@@ -322,7 +328,7 @@ namespace MyAwesomeAutoClikerFormsFramework
                 buttonStartNetflixAndChill.Enabled = false;
                 buttonStopNetflixAndChill.Enabled = true;
                 buttonStart.Enabled = false;
-                NetFlixAndChill();
+                //NetFlixAndChill();
             }
         }
 
@@ -334,7 +340,7 @@ namespace MyAwesomeAutoClikerFormsFramework
             RunNetflixAndChill = false;
         }
 
-        private void NetFlixAndChill()
+        /*private void NetFlixAndChill()
         {
             while (true)
             {
@@ -360,7 +366,7 @@ namespace MyAwesomeAutoClikerFormsFramework
                     SendKeys.SendWait("{ENTER}");
                     Thread.Sleep(200);
                     TimeConverter();
-                    CheckIfRandomBoxIsChecked();
+                    CheckIfRandomBoxIsChecked(intervals);
                     if (GetAsyncKeyState(Keys.N) < 0)
                     {
                         RunNetflixAndChill = false;
@@ -370,6 +376,6 @@ namespace MyAwesomeAutoClikerFormsFramework
                 }
                 Thread.Sleep(2);
             }
-        }
+        }*/
     }
 }
